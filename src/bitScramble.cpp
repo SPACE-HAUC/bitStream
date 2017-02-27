@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 #include <limits>
 
 #include "bitStream.h"
@@ -14,13 +13,14 @@ using std::streamsize;
 using std::numeric_limits;
 
 bitStream::bitStream(int sizeOfNew) {
+  stream = nullptr;
   seed = new unsigned(time(nullptr));
   generateNewStream(sizeOfNew);
 }
 
 bitStream::~bitStream() {
   if (stream != nullptr) {
-    delete stream;
+    delete[] stream;
   }
   if (seed != nullptr) {
     delete seed;
@@ -57,7 +57,7 @@ void bitStream::flipBit(int indexOfBit) {
 // This function generates a random stream of bits of the user inputed length.
 void bitStream::generateNewStream() {
   if (stream != nullptr) {
-    delete stream;  // delete current stream to make room for the new one
+    delete[] stream;  // delete current stream to make room for the new one
   }
   // if (seed != nullptr) {
   //   delete seed;
