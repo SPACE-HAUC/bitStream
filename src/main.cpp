@@ -6,8 +6,8 @@
 #include "bitStream.h"
 
 int main(int argc, char const *argv[]) {
-    bitStream test;
-    test.generateNewStream(30);
+    bitStream test(30);
+    //test.generateNewStream(30);
     test.printStream();
     test.generateNewStream();
     test.printStream();

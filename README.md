@@ -5,4 +5,6 @@
 
 # Add text describing project
 
+This header and implementation file provide an initial class to help begin work on bit stream encoding, decoding, and error checking and correction. It includes the bitStream class, which contains an array called stream, a seed for the random number generator, and the size of the stream. Current member functions can add a new random bitstream of a user defined length, 
+
 [![GPL License](http://darrienglasser.com/gpl-v3-logo.jpg)](http://www.gnu.org/licenses/gpl-3.0.en.html)

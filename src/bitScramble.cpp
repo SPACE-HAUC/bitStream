@@ -14,6 +14,7 @@ using std::streamsize;
 using std::numeric_limits;
 
 bitStream::bitStream(int sizeOfNew) {
+  seed = new unsigned(time(nullptr));
   generateNewStream(sizeOfNew);
 }
 
@@ -58,9 +59,10 @@ void bitStream::generateNewStream() {
   if (stream != nullptr) {
     delete stream;  // delete current stream to make room for the new one
   }
-  if (seed != nullptr) {
-    delete seed;
-  }
+  // if (seed != nullptr) {
+  //   delete seed;
+  // }
+  // seed = new unsigned(time(nullptr));
   int sizeOfNew;
   cout << "input the size of the desired bit stream\n";
   getIntInput(&sizeOfNew);
@@ -77,10 +79,10 @@ void bitStream::generateNewStream(int sizeOfNew) {
   if (stream != nullptr) {
     delete stream;  // delete current stream to make room for the new one
   }
-  if (seed != nullptr) {
-    delete seed;
-  }
-  seed = new unsigned(time(nullptr));
+  // if (seed != nullptr) {
+  //   delete seed;
+  // }
+  // seed = new unsigned(time(nullptr));
   stream = new int[sizeOfNew];
   sizeOfStream = sizeOfNew;
   for (int i = 0; i < sizeOfStream; i++) {
