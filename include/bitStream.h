@@ -3,6 +3,8 @@
 #ifndef INCLUDE_BITSTREAM_H_
 #define INCLUDE_BITSTREAM_H_
 
+#include <ctime>
+
 bool getIntInput(int *inputVar);
 
 class bitStream {

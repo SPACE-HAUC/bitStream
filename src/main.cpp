@@ -7,7 +7,7 @@
 
 int main(int argc, char const *argv[]) {
     bitStream test(30);
-    //test.generateNewStream(30);
+    // test.generateNewStream(30);
     test.printStream();
     test.generateNewStream();
     test.printStream();
