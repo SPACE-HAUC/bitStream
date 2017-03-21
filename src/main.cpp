@@ -1,17 +1,19 @@
-// Copyright 2017 UMass Lowell SpaceHauc C&DH Team
+// Copyright 2017 UMass Lowell SpaceHauc C&DH
 
 #include <iostream>
-#include <cstdlib>
+#include <vector>
+#include <exception>
+#include <stdexcept>
 
 #include "bitStream.h"
 
 int main(int argc, char const *argv[]) {
-    bitStream test(30);
-    // test.generateNewStream(30);
-    test.printStream();
-    test.generateNewStream();
-    test.printStream();
-    test.scramble();
-    test.printStream();
-    return 0;
+  scrambler test;
+  test.setSeed();
+  test.randomizeBitStream(16);
+  std::cout << test << std::endl;
+  std::cout << "scrambling!!" << std::endl;
+  test.scramble(30);
+  std::cout << test << std::endl;
+  return 0;
 }

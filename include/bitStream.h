@@ -1,27 +1,33 @@
 // Copyright 2017 UMass Lowell SpaceHauc C&DH
-
 #ifndef INCLUDE_BITSTREAM_H_
 #define INCLUDE_BITSTREAM_H_
 
-#include <ctime>
-
-bool getIntInput(int *inputVar);
+#include <iostream>
+#include <vector>
 
 class bitStream {
  public:
-  bitStream() { seed = new unsigned(time(nullptr));}  // default constructor
-  explicit bitStream(int sizeOfNew);
-  ~bitStream();
-  void scramble();
-  void printStream();
-  void generateNewStream();
-  void generateNewStream(int sizeOfNew);
+  int getBit(int index) const;
+  void resize(int newSize);
+  void randomizeBitStream(int newSize);
+  friend std::ostream& operator << (std::ostream& os, const bitStream stream);
+  unsigned randSeed;
 
- private:
-  int *stream;
-  int sizeOfStream;
-  unsigned int* seed;
-  void flipBit(int indexOfBit);
+  inline void flipBit(int index) {
+    stream[index / sizeOfInt] ^= (1 << index % sizeOfInt);
+  }
+
+  inline void setSeed() {randSeed = time(nullptr);}
+
+ protected:
+  std::vector<int> stream;
+  unsigned sizeOfStream;
+  static const unsigned sizeOfInt;
+};
+
+class scrambler: public bitStream {
+ public:
+  void scramble(int rate);
 };
 
 #endif  // INCLUDE_BITSTREAM_H_
